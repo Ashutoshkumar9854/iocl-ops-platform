@@ -1,0 +1,30 @@
+# Docker Compose Configuration for IOCL Operations Platform
+# Spin up both frontend and backend local servers easily
+
+version: '3.8'
+
+services:
+  backend:
+    image: node:18-alpine
+    container_name: iocl-backend
+    working_dir: /usr/src/app
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./backend:/usr/src/app
+    environment:
+      - PORT=3001
+      - NODE_ENV=development
+    command: sh -c "npm install && npm start"
+
+  frontend:
+    image: node:18-alpine
+    container_name: iocl-frontend
+    working_dir: /usr/src/app
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/usr/src/app
+    depends_on:
+      - backend
+    command: sh -c "npm install && npm run dev -- --host"

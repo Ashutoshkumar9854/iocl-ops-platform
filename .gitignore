@@ -1,0 +1,25 @@
+# ─── Node ───────────────────────────────────────────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ─── Environment variables (NEVER commit these) ───────────────────────────
+.env
+.env.local
+.env.production
+
+# ─── Build outputs ───────────────────────────────────────────────────────────
+frontend/dist/
+frontend/.vite/
+
+# ─── SQLite database (local dev only — use Render persistent disk in prod) ─
+backend/*.db
+backend/*.db-shm
+backend/*.db-wal
+
+# ─── OS & editor noise ───────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.vscode/
+*.swp

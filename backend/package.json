@@ -1,0 +1,17 @@
+{
+  "name": "iocl-ops-backend",
+  "version": "1.0.0",
+  "description": "Backend API Server for IOCL Digital Logbook & Operations Platform",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "sqlite3": "^5.1.7",
+    "ws": "^8.21.1"
+  }
+}

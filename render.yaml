@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: iocl-backend
+    env: node
+    buildCommand: "cd backend && npm install"
+    startCommand: "cd backend && npm start"
+    envVars:
+      - key: NODE_ENV
+        value: production
+    disk:
+      name: iocl-sqlite-data
+      mountPath: /usr/src/app/data
+      sizeGB: 1
