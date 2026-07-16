@@ -11,9 +11,10 @@ const db = new sqlite3.Database(dbPath, (err) => {
   }
 });
 
-// Enable foreign keys and WAL mode
+// Enable foreign keys, disable WAL (unsupported on network storage), and set busy timeout
 db.run('PRAGMA foreign_keys = ON;');
-db.run('PRAGMA journal_mode = WAL;');
+db.run('PRAGMA journal_mode = DELETE;');
+db.run('PRAGMA busy_timeout = 5000;');
 
 // Helper to run query as promise
 const runAsync = (sql, params = []) => {
