@@ -287,26 +287,19 @@ export default function App() {
   const handleLogin = async (e) => {
     e.preventDefault();
     setAuthError('');
-    console.log('Initiating login with:', { username: loginUsername, apiBase: API_BASE });
     try {
       const res = await fetch(`${API_BASE}/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username: loginUsername, password: loginPassword }),
       });
-      console.log('Login response status:', res.status);
       const data = await res.json();
-      console.log('Login response data:', data);
       if (!res.ok) throw new Error(data.error || 'Login failed');
       localStorage.setItem('iocl_token', data.token);
       localStorage.setItem('iocl_user', JSON.stringify(data.user));
-      console.log('Saved token and user to localStorage successfully.');
       setToken(data.token);
       setUser(data.user);
-    } catch (err) {
-      console.error('Login process caught error:', err);
-      setAuthError(err.message);
-    }
+    } catch (err) { setAuthError(err.message); }
   };
 
   const handleLogout = () => {
