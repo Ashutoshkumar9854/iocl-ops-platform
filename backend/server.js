@@ -40,6 +40,11 @@ const authenticateUser = async (req, res, next) => {
   }
 };
 
+// Health check endpoint (used by Railway and other platforms)
+app.get('/api/v1/health', (req, res) => {
+  res.json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
 // 1. Auth Endpoint
 app.post('/api/v1/auth/login', async (req, res) => {
   const { username, password } = req.body;
