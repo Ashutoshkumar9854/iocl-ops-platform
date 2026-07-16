@@ -11,8 +11,9 @@ const db = new sqlite3.Database(dbPath, (err) => {
   }
 });
 
-// Enable foreign keys
+// Enable foreign keys and WAL mode
 db.run('PRAGMA foreign_keys = ON;');
+db.run('PRAGMA journal_mode = WAL;');
 
 // Helper to run query as promise
 const runAsync = (sql, params = []) => {
